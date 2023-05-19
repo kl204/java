@@ -1,6 +1,7 @@
 package one.two.three;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -11,10 +12,18 @@ public class LottoMachine {
 	public LottoBall[] startMachine() {
 		LottoBall[] selectedBalls = new LottoBall[6];
 	
-		for(int i = 0; i<selectedBalls.length;i++) {
+		for(int i = 0; i<selectedBalls.length;i++) { //수를 비교할때 그냥 정수 6넣어서 하면 '하드코딩'이라고함, 최대한 함수 이용해서
 			
+			Collections.shuffle(balls);//섞어 주는 코드
 			selectedBalls[i] = this.getBall(); 
-			
+
+			System.out.println(selectedBalls[i] +"이 선택되었습니다.");
+
+			try {
+				Thread.sleep(1500);// 일정간격
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
 		
 		return selectedBalls;
