@@ -39,6 +39,8 @@ public class LottoMachineRe {
 
 		return ball;
 	}
+	
+	/*
 	//1개의 로또볼을 꺼낸다
 	public LottoBall getBallOld() {
 		//리턴할 볼에대한 property
@@ -55,6 +57,7 @@ public class LottoMachineRe {
 			ball = balls.get(index);  //ArrayList의 get에 대한 내용: index의 값을 balls의 리스트에서 검색하여 가져옴, 
 									// 무작위로 생성된 값이 balls의 리스트에 존재하는 이유는 이미 45개의 볼이 모두 존재하기 
 									//때문에 무작위로 뽑아도 항상 존재하기 때문에 가져올 수 있음
+	
 			//꺼낸 공 중복 체크
 			if(!ball.isSelected()) { // 따라서 중복의 제거를 하기 위해서 플래그가 따로 필요하게 됨. startMachine은 한번 실행 selectBalls[] 도 
 									// 하나의 객체 이지만 각 배열안의 값들 하나 안에는 getBall의 LottoBall 타입의 ball 들이 하나하나 따로
@@ -62,11 +65,13 @@ public class LottoMachineRe {
 				ball.setSelected(true);
 				break;
 			}
+			
 		}
 		
 		
 		return ball;
 	}
+	*/
 	
 	public void setBall(ArrayList<LottoBall> balls) {
 		this.setBall(balls);
