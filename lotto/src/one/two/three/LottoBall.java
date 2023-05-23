@@ -14,6 +14,7 @@ public class LottoBall {//
 	public int getNumber() {
 		return number;
 	}
+	
 	/*
 	public void setNumber(int number) { 공의 숫자이기 때문에 private로 바꾸거나 set(수정)을 사용하지 않도록 한다.
 		this.number = number;t
