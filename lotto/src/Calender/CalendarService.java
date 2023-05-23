@@ -12,7 +12,7 @@
 실행 : 연도 월에 따른 날짜 저장 property, 날짜 저장 함수, 날짜게터
 메인 : 데이터 준비, 실행
 */
-package sec.calendar.prj;
+package Calender;
 
 import java.util.Scanner;
 

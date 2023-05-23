@@ -1,4 +1,4 @@
-package one.two.three;
+package LottoBallProj;
 
 //데이터클래스(DTO/VO): 문제를 해결하는 정보를 가지고 있다. 은닉성을 나타내는 대표적 클래스
 // 은닉성 : 데이터는 숨기고 메소드를 통해서 해결

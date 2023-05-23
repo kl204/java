@@ -1,4 +1,4 @@
-package sec.calendar.prj;
+package Calender;
 
 import java.util.Calendar;
 import java.util.List;

@@ -1,4 +1,4 @@
-package one.two.three;
+package LottoBallProj;
 
 import java.util.ArrayList;
 import java.util.Collections;
