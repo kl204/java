@@ -6,4 +6,5 @@
  *
  */
 module Calendar {
+	requires java.sql;
 }
