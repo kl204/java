@@ -75,6 +75,7 @@ public class BoardService {
 	
 	public void read() {
 		BoardDAO dao = new BoardDAO();
+		Board board = new Board();
 		//입력 받기
 		System.out.println("[게시물 읽기]");
 		System.out.print("bno: "); 	
@@ -83,7 +84,31 @@ public class BoardService {
 		//boards 테이블에서 해당 게시물을 가져와 출력
 		try {
 
-			dao.read(bno);			
+			board = dao.read(bno);			
+						
+			System.out.println("#############");
+			System.out.println("번호: " + board.getBno());
+			System.out.println("제목: " + board.getBtitle());
+			System.out.println("내용: " + board.getBcontent());
+			System.out.println("쓴이: " + board.getBwriter());
+			System.out.println("날짜: " + board.getBdate());
+		
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("보조메뉴: 1.Update | 2.Delete ");
+		System.out.print("메뉴선택: ");
+		String menuNo = scanner.nextLine();
+		System.out.println();
+		
+		if(menuNo.equals("1")) {
+			
+			
+			update(bno);				// 해당 행의 데이터 업데이트를 위해서 가져온 Bno를 넘겨준다.
+			
+		} else if(menuNo.equals("2")) {
+			
+			
+			dao.delete(board);
+		}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,23 +153,7 @@ public class BoardService {
 		//게시물 목록 출력
 		list();
 	}
-	
-//	public void delete(Board board) {
-//		//boards 테이블에 게시물 정보 삭제
-//		try {
-//			String sql = "DELETE FROM boards WHERE bno=?";
-//			PreparedStatement pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, board.getBno());
-//			pstmt.executeUpdate();
-//			pstmt.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			exit();
-//		}
-//		
-//		//게시물 목록 출력		
-//		list();
-//	}
+
 	
 	public void clear() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
 		BoardDAO dao = new BoardDAO();

@@ -13,6 +13,10 @@ import java.util.Scanner;
 
 public class BoardDAO {
 	public ConnUtil conUt = new ConnUtil(); 
+	
+	
+//	ResultSet rs = pstmt.executeQuery();	--> select와 같이 리턴될 데이터가 있을 때 사용한다		
+//	pstmt.executeUpdate();					--> insert update delete와 같이 리턴 될 값이 없을때 사용한다.
 
 	
 	
@@ -53,9 +57,9 @@ public class BoardDAO {
 	public ArrayList<Board> list() throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
 		BoardService bs = new BoardService();
 		
-		ArrayList<Board> result = new ArrayList<>();
+		ArrayList<Board> result = new ArrayList<>(); // 가져온 Board 타입 데이터 행(튜플)들을 받기 위한 ArrayList
 		
-		Connection conn = conUt.getConnection();
+		Connection conn = conUt.getConnection(); // PreparedStatement 사용하여 sql 쓰기 위해서 connection 함
 
 		Properties p = new Properties();
 	
@@ -65,8 +69,9 @@ public class BoardDAO {
 	            
 	            
 				String sql = p.getProperty("listSQL");
-				PreparedStatement pstmt = conn.prepareStatement(sql);
+				PreparedStatement pstmt = conn.prepareStatement(sql); // sql 쓰기 위해서 준비
 	            
+				
 				ResultSet rs = pstmt.executeQuery();
 				
 				
@@ -94,11 +99,12 @@ public class BoardDAO {
 	}
 	
 	
-	public void read(int bno) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
+	public Board read(int bno) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
 		BoardService bs = new BoardService();
 		Connection conn = conUt.getConnection();
-		Scanner scanner = new Scanner(System.in);
-		BoardDAO dao = new BoardDAO();
+//		Scanner scanner = new Scanner(System.in);
+//		BoardDAO dao = new BoardDAO();
+		Board board = new Board();	
 
 		Properties p = new Properties();
 
@@ -111,39 +117,24 @@ public class BoardDAO {
 			pstmt.setString(1, Integer.toString(bno));
 			
 
-			ResultSet rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();			
 //			pstmt.executeUpdate();	
 
-			if(rs.next()) {
-				Board board = new Board();
+			
+			
+			//--> if(rs.next()) 같은 경우 쿼리가 한번밖에 안날라온다. while을 써야 계속 받을 수 있음. 시험
+			
+			if(rs.next()) { // ResultSet 클래스인 next()는 Select 결과의 존재여부 확인, ResultSet은 select 쿼리 결과를 행으로 저장하며
+							//커서를 통해서 각 행의 데이터에 접근, 최초의 커서는 1행 이전에 존재하기 때문에 넘겨줘야 읽을 수 있다.
+							// next()의 return은 존재할 시 true로 반환 된다. 마지막행에 커서 도달시 false 반환
+//				Board board = new Board();							//Board DTO의 객체를 생성해서 출력을 위하여 받아주게 된다.
 				board.setBno(rs.getInt("bno"));
 				board.setBtitle(rs.getString("btitle"));
 				board.setBcontent(rs.getString("bcontent"));
 				board.setBwriter(rs.getString("bwriter"));
 				board.setBdate(rs.getDate("bdate"));
-				System.out.println("#############");
-				System.out.println("번호: " + board.getBno());
-				System.out.println("제목: " + board.getBtitle());
-				System.out.println("내용: " + board.getBcontent());
-				System.out.println("쓴이: " + board.getBwriter());
-				System.out.println("날짜: " + board.getBdate());
-			
-			System.out.println("-------------------------------------------------------------------");
-			System.out.println("보조메뉴: 1.Update | 2.Delete ");
-			System.out.print("메뉴선택: ");
-			String menuNo = scanner.nextLine();
-			System.out.println();
-			
-			if(menuNo.equals("1")) {
 				
-				
-				bs.update(board.getBno());
-				
-			} else if(menuNo.equals("2")) {
-				
-				
-				delete(board);
-			}
+
 			
 			conUt.closeConnection(rs, pstmt, conn);
 			}else {
@@ -153,6 +144,8 @@ public class BoardDAO {
 		e.printStackTrace();
 		bs.exit();
 	}
+		 
+		 return board;
 
 				
 	}
