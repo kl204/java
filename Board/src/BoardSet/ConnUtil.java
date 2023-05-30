@@ -58,12 +58,13 @@ public class ConnUtil {
 				
 		Properties p = new Properties();
 		
-        try (FileInputStream fis = new FileInputStream("lib/db.properties")) {
-            p.load(fis);
+
+        try(FileInputStream input = new FileInputStream("C:/Users/금정산2_PC12/git/thirdJava/Board/resources/db"))  {
+            p.load(input);
             
             Class.forName(p.getProperty("driver"));
             
-            con = DriverManager.getConnection(p.getProperty("jdbcURL") + p.getProperty("id") + p.getProperty("password"));
+            con = DriverManager.getConnection(p.getProperty("jdbcURL"), p.getProperty("id"), p.getProperty("password"));
                        
             
         } catch (IOException e) {
