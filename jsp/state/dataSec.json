@@ -1,0 +1,29 @@
+[
+	{
+		"title" : "세이노의 가르침",
+		"book_no" : 1,
+		"content" : "세이노의 가르침 / 세이노 / 데이원",
+		"rental_check" : "F",
+		"author" : "세이노",
+		"display_check" : "T",
+		"category_name" : "자기계발"
+	},
+	{
+		"title" : "흔한남매 13",
+		"book_no" : 2,
+		"content" : "흔한남매 13 / 흔한남매 / 미래엔아이세움",
+		"rental_check" : "F",
+		"author" : "흔한남매",
+		"display_check" : "T",
+		"category_name" : "어린이(초등)"
+	},
+	{
+		"title" : "사장학개론",
+		"book_no" : 3,
+		"content" : "사장학개론 / 김승호 / 스노우폭스북스",
+		"rental_check" : "F",
+		"author" : "김승호",
+		"display_check" : "T",
+		"category_name" : "경제/경영"
+	}
+]

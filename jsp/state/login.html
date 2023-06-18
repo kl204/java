@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>도서 관리 시스템</title>
+<link href="../../css/layout.css" rel="stylesheet" type="text/css">
+<link href="../../css/login.css" rel="stylesheet" type="text/css">
+
+<!-- 주소 관련 src -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://kit.fontawesome.com/770bda6b86.js" crossorigin="anonymous"></script>
+<script src="js\login.js"></script>	
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<nav class="menu_bar">
+	        <ul class="menu_bar_category">
+	            <h1 class="menu_bar_header">
+	                <i class="fa-solid fa-book" style="color: #3373e1;"></i>
+	                도서 대출 시스템
+	            </h1>
+	
+	            <li><img class="menu_icon" src="../../images/layout/menu_home.svg"/><a href="home.html">홈</a></li>
+				<li><img class="menu_icon" src="../../images/layout/menu_home.svg"/><a href="login.html">회원가입</a></li>
+				<li><img class="menu_icon" src="../../images/layout/menu_book.svg"/><a href="totalRent.html">대출/반납</a></li>
+				<li>
+					<div class="menu_div">
+						<img class="menu_icon" src="../../images/layout/menu_list.svg"/>
+						<a href="#">현황</a>
+						<img class="submenu_icon" src="../../images/layout/menu_arrow.svg" class="menu_icon_svg">
+					</div>
+					<ul style="width:100%;" class="submenu">
+	                    <li><a href="totalState.html">전체 대출 목록</a></li>
+	                    <li><a href="turnoverState.html">대출 회전율 정보</a></li>
+	                    <li><a href="overduePerson.html">연체 회원 목록</a></li>
+	                    <li><a href="overdueState.html">연체 도서 목록</a></li>
+	                </ul>
+				</li>
+			</ul>
+	        <div class="menu_bar_footer">
+	            <span> <i class="fa-solid fa-user"></i>관리자</span>
+	            <button class="btn_logout">로그아웃</button>
+	        </div>
+	    </nav>
+		<main>
+			
+			<div>
+				<div class="contents">
+
+					<div class="menu_info">
+						<div class="menu_title">
+							<h1>회원가입</h1>
+						</div>
+						<div class="flex_1"></div>
+						<div class="menu_label">
+							<img alt="" src="../../images/layout/menu_home.svg">
+							<label>관리자 | 회원가입</label>
+						</div>
+					</div>
+
+				<div class="login_part" style="padding-top: 30px">
+
+					<table class="overdue_tbl_sec" border="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td colspan="2" style="text-align: left;">
+									<h2>회원가입</h2>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 150px"><h3>이름</h3></td>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="이름을 입력하세요"/></td>
+							</tr>
+							<tr>
+								<td><h3>아이디</h3></td>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="아이디를 입력하세요"/><button class="btn_m_blue_sec" type="button" id="idCheck">중복검사</button></td>
+							</tr>
+							<tr>
+								<td><h3>이메일</h3></td>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="이메일을 입력하세요"/><button class="btn_m_blue_sec" type="button" id="emailCheck">중복검사</button></td>
+							</tr>
+							<tr>
+								<td rowspan="2"><h3>비밀번호</h3></td>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="비밀번호를 입력하세요"/></td>
+							</tr>
+							<tr><td style="text-align: left"><input class="inputText" type="text" placeholder="비밀번호를 다시 입력하세요"/></td></tr>
+							<tr>
+								<td><h3>전화번호</h3></td>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="전화번호를 입력하세요"/></td>	
+							</tr>
+							<tr>
+								<td rowspan="2"><h3>주소</h3></td>
+								<td style="text-align: left"><input class="inputText" id="address" type="text" placeholder="주소를 입력하세요"/><button class="btn_m_blue_sec" type="button" onclick="findAddress()">우편번호찾기</button></td>
+							</tr>
+							<tr>
+								<td style="text-align: left"><input class="inputText" type="text" placeholder="상세 주소를 입력하세요"/></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+								<button class="btn_m_blue_sec" type="submit" id="memberSubmit">가입하기</button>
+								<button class="btn_m_blue_sec" type="button" onclick="subInfoDisplay()">부가정보입력</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<!-- display:none 으로 시작할때는 가려주고 부가정보 입력 onclick으로 폈다 접었다 할수 있음 -->
+					<table class="overdue_tbl_sec" border="0" cellspacing="0" id="subInfo" style="display: none;">
+						<tbody>
+							<tr>
+								<td ><h3>좋아하는 도서 카테고리</h3></td>
+								<td><input type="checkbox" name="category" value="소설"/>소설</td>
+								<td><input type="checkbox" name="category" value="동화"/>동화</td>
+								<td><input type="checkbox" name="category" value="자기계발"/>자기계발</td>
+								<td><input type="checkbox" name="category" value="수험서"/>수험서</td>
+							</tr>
+							<tr>
+								<td ><h3>자주 책을 빌리는 시간</h3></td>
+								<td><input type="radio" name="category" value="카테고리"/>오전</td>
+								<td><input type="radio" name="category" value="동화"/>오전오후</td>
+								<td><input type="radio" name="category" value="자기계발"/>오후</td>
+								<td><input type="radio" name="category" value="수험서"/>저녁</td>
+
+							</tr>
+							<tr>
+								<td><h3>회원부가정보</h3></td>
+								<td><select id="selectBook" style="margin-left: 20px">
+									<option>직업</option>
+									<option>학생</option>
+									<option>회사원</option>
+								</select></td>
+								<td><select id="selectBook" style="margin-left: 20px">
+									<option>성격</option>
+									<option>소심</option>
+									<option>대범</option>
+								</select></td>
+								<td><select id="selectBook" style="margin-left: 20px">
+									<option>MBTI</option>
+									<option>ENFP</option>
+									<option>INTJ</option>
+								</select></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><h3>건의사항</h3></td>
+								<td colspan="4"><textarea name="letter" rows="10" cols="180" ></textarea></td>
+							</tr>
+							<tr>
+								<td colspan="5" style="width: 100%">
+								<button class="btn_m_blue_sec" type="button" >부가정보제출</button>
+								</td>
+							</tr>
+
+
+						</tbody>
+					</table>
+
+					<table class="overdue_tbl_sec" border="0" cellspacing="0" id="subInfo" style="display: none;">
+						<tbody>
+							<tr>
+
+							</tr>
+
+						</tbody>
+					</table>
+
+
+					
+				</div>
+
+
+			</div>
+		</main>
+	</div>
+	<footer>
+	</footer>
+</body>
+</html>

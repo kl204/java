@@ -5,7 +5,15 @@
 <meta charset="EUC-KR">
 <title>도서 관리 시스템</title>
 <link href="../../css/layout.css" rel="stylesheet" type="text/css">
-<script src="https://kit.fontawesome.com/770bda6b86.js" crossorigin="anonymous"></script>
+<link href="../../css/total.css" rel="stylesheet" type="text/css">
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+
+	</script>
+<script src="js\total.js"></script>	
+
+<!-- <script src="https://kit.fontawesome.com/770bda6b86.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
 	<div class="wrapper">
@@ -33,13 +41,15 @@
 				</li>
 			</ul>
 	        <div class="menu_bar_footer">
-	            <span> <i class="fa-solid fa-user"></i>     관리자</span>
+	            <span> <i class="fa-solid fa-user"></i>관리자</span>
 	            <button class="btn_logout">로그아웃</button>
 	        </div>
 	    </nav>
 		<main>
+			
 			<div>
 				<div class="contents">
+					<!-- 메뉴 타이틀과 라벨 -->
 					<div class="menu_info">
 						<div class="menu_title">
 							<h1>전체 대출 목록</h1>
@@ -50,111 +60,87 @@
 							<label>관리자 | 현황 | 전체 대출</label>
 						</div>
 					</div>
-					<div class="content_section">
+					<!-- 셀렉트 메뉴 -->
+					<div class="content_section_sec">
 						<form>
 							<ul>
 								<li>
-									<select>
+									<select id="selectBook" style="margin-left: 20px">
 										<option>전체</option>
-										<option>도서 번호</option>
+										<option>도서번호</option>
 										<option>도서명</option>
 									</select>
 								</li>
-								<li class="flex_1">
-									<input type="text" placeholder="검색어를 입력하세요"/>
+								<li>
+									<input id="searchBook" type="text" placeholder="검색어를 입력하세요"/>
 								</li>
 								<li>
-									<button class="btn_m_blue">검 색</button>
+									<button id="searchBookButton" type="button" class="btn_m_blue" >검 색</button>
 								</li>
 							</ul>
 							<ul>
+								<li class="flex_1"></li>
+							</ul>
+							<ul style="justify-content: right">
 								<li>
-									<input type="text" placeholder="날짜 - 시작"/>
+									<input type="date"
+									id="startDate"
+									max="2023-06-28"
+									min="2023-06-01"
+									value="2023-00-00">
 								</li>
 								<li>
 								~
 								</li>
 								<li>
-									<input type="text" placeholder="날짜 - 종료"/>
+									<input type="date"
+									id="endDate"
+									max="2023-06-28"
+									min="2023-06-01"
+									value="2023-00-00">
 								</li>
 								<li>
-									<button class="btn_m_blue">검 색</button>
+									<button id="searchDateButton" type="button" class="btn_m_blue" style="margin-right: 20px;">검 색</button>
 								</li>
 							</ul>
 						</form>
 					</div>
 							
-					<div class="content_section">
+					<div class="content_section_sec">
+							<!-- 셀렉트 메뉴 -->
 							<div class="sort_tbl">
-								<label><b>전체 2건</b></label>
+								<label id="totalNum"></label>
 								<label>|</label>
 								<label>정렬 : </label>
-								<select>
-									<option>연체일</option>
+								<select id="sortTbl" >
+									<option>정렬순</option>
+									<option>대출일</option>
 									<option>도서명</option>
 									<option>회원명</option>
 								</select>
 							</div>
+						
+							<div class="tbl_padding">							
+							<!-- 테이블 -->
+							<table class="overdue_tbl" cellspacing='0' id="outputContent">
+								<thead><th>도서번호</th><th>도서명</th><th>회원번호</th><th>회원명</th><th>대출일</th><th>상태</th><th>반납</th></thead>
+								<tbody id="tableIn">
 
-
-
-							<table class="overdue_tbl"  cellspacing="0">
-								<colgroup>
-									<col width="10%"/>
-									<col width="*"/>
-									<col width="10%"/>
-									<col width="10%"/>
-									<col width="10%"/>
-									<col width="10%"/>
-									<col width="10%"/>
-								</colgroup>
-								<thead>
-									<tr>
-										<th>도서번호</th>
-										<th>도서명</th>
-										<th>회원번호</th>
-										<th>회원명</th>
-										<th>대출일</th>
-										<th>상태</th>
-										<th>반납</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>000001</td>
-										<td>이것이 자바다</td>
-										<td>0731</td>
-										<td>홍길동</td>
-										<td>2022-03-21</td>
-										<td>대출중</td>
-										<td><button class="btn_s_red"> 반납 </button></td>
-									</tr>
-									<tr>
-										<td>001021</td>
-										<td>업무에 바로 쓰는 SQL 튜닝</td>
-										<td>1125</td>
-										<td>이찬종</td>
-										<td>2023-05-21</td>
-										<td>대출중</td>
-										<td><button class="btn_s_red"> 반납 </button></td>
-									</tr>
 								</tbody>
 							</table>
-						<div class="paging_ul">
-							<ul>
-								<li class="paging_li"><img alt="" src="../../images/layout/pages_left.svg"></li>
-								<li class="paging_li"><img alt="" src="../../images/layout/page_left.svg"></li>
-								<li class="flex_1 default_check"><a href="#">1</a></li>
-								<li class="paging_li"><img alt="" src="../../images/layout/page_right.svg"></li>
-								<li class="paging_li"><img alt="" src="../../images/layout/pages_right.svg"></li>
-							</ul>
+
+							</div>
+
+						<!-- 페이지 이동 -->
+						<div class="paging_ul" id="pagenation">
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</main>
 	</div>
-	<footer>
+	<footer >
 	</footer>
 </body>
 </html>

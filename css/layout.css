@@ -6,7 +6,7 @@
 body {
 	margin: 0 auto;
 	padding: 0;
-	font-family: "¸¼Àº °íµñ";
+	font-family: "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
 }
 
 header {
@@ -26,13 +26,13 @@ a {
 
 /* hover */
 
-/* ÀÌÇýÀ± ¼öÁ¤
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 .menu_bar_category li a:hover{
 	background-color: rgb(42, 106, 201);
 	color:black;
 
 } */
-/* ÀÌÇýÀ± ¼öÁ¤ 
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 .submenu > li {
 	line-height: 30px;
 
@@ -43,7 +43,7 @@ a {
 .submenu {
 	/*display: none;*/
 	opacity: 0;
-	height: 10px; /*ulÀÇ ³ôÀÌ¸¦ ¾Èº¸ÀÌ°Ô Ã³¸®*/
+	height: 10px; /*ulï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Èºï¿½ï¿½Ì°ï¿½ Ã³ï¿½ï¿½*/
 	overflow: hidden;
 }
 .submenu li {
@@ -59,7 +59,7 @@ a {
 	display: inline-block;
 	opacity: 1;
 	transition: all 1s;
-	height: 250px; /*¼­ºê¸Þ´º liÇÑ°³ÀÇ ³ôÀÌ 50*5*/
+	height: 250px; /*ï¿½ï¿½ï¿½ï¿½Þ´ï¿? liï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 50*5*/
 	transition-duration: 1s;
 }
 .submenu > li > a{
@@ -142,7 +142,7 @@ input {padding: 10px; border-radius: 3px; border: 1px solid #9f9f9f;}
 select {padding: 10px;border-radius: 3px; border: 1px solid #9f9f9f;}
 .flex_1 {flex: 1;}
 
-/* ¸Þ´º¹Ù
+/* ï¿½Þ´ï¿½ï¿½ï¿½
 .menu_bar {
 	width: 15%;
 	height: 100vh;
@@ -241,7 +241,7 @@ main .menu_info .menu_label {
     color: #737272;
 }
 main .menu_info .menu_title { width: 30%; }
-/* ÀÌÇýÀ± ¼öÁ¤ 
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 main .menu_info div {
 	float:left;
 } */
@@ -299,6 +299,7 @@ main .contents {
 	font-size: 15px;
 }
 .sort_tbl label {padding: 10px 5px;}
+
 .overdue_tbl {
 	width: 100%;
 	padding: 0px 20px 20px 20px;
