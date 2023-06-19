@@ -1,0 +1,16 @@
+jdbcURL = jdbc:mysql://localhost:3306/students
+driver = com.mysql.cj.jdbc.Driver
+id = root
+password = 1234
+
+insertSQL =  INSERT INTO boards (btitle, bcontent, bwriter, bdate) VALUES (?, ?, ?, now());
+
+listSQL =  SELECT bno, btitle, bcontent, bwriter, bdate  FROM boards ORDER BY bno DESC;
+		
+readSQL =  SELECT bno, btitle, bcontent, bwriter, bdate FROM boards WHERE bno=?;
+
+updateSQL = UPDATE boards SET btitle=?, bcontent=?, bwriter=? WHERE bno=?;
+
+deleteSQL = DELETE FROM boards WHERE bno=?;
+
+clearSQL = TRUNCATE TABLE boards;
